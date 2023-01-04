@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		593E21DF2965C2EF00CCC524 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5942BE0A295BB8B000A82FAB /* GameScene.swift */; };
 		5942BE05295BB8B000A82FAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5942BE04295BB8B000A82FAB /* AppDelegate.swift */; };
 		5942BE09295BB8B000A82FAB /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5942BE08295BB8B000A82FAB /* Actions.sks */; };
-		5942BE0B295BB8B000A82FAB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5942BE0A295BB8B000A82FAB /* GameScene.swift */; };
 		5942BE0D295BB8B000A82FAB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5942BE0C295BB8B000A82FAB /* GameViewController.swift */; };
 		5942BE10295BB8B000A82FAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5942BE0E295BB8B000A82FAB /* Main.storyboard */; };
 		5942BE12295BB8B300A82FAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5942BE11295BB8B300A82FAB /* Assets.xcassets */; };
@@ -140,7 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5942BE0B295BB8B000A82FAB /* GameScene.swift in Sources */,
+				593E21DF2965C2EF00CCC524 /* GameScene.swift in Sources */,
 				5942BE0D295BB8B000A82FAB /* GameViewController.swift in Sources */,
 				5942BE05295BB8B000A82FAB /* AppDelegate.swift in Sources */,
 			);

@@ -21,7 +21,6 @@ class GameScene: SKScene {
         round.position.y = frame.midY
         round.physicsBody = .init(rectangleOf: round.frame.size)
         round.physicsBody?.isDynamic = false
-        round.speed = num
         self.addChild(round)
         
         slider.tintColor = UIColor.black
@@ -38,11 +37,15 @@ class GameScene: SKScene {
         
         loadSlider()
         self.changeColor()
+        
     }
     
     func changeColor() {
-        let runAction = SKAction.run { self.randomColor() }
-        self.run(.repeatForever(runAction), withKey: "changeBgKey")
+        let sqncBackground = SKAction.sequence([
+            .wait(forDuration: 1),
+            .run { self.randomColor() }
+        ])
+        self.run(.repeatForever(sqncBackground), withKey: "key")
     }
     func randomColor() {
         self.backgroundColor = .init(
@@ -53,13 +56,14 @@ class GameScene: SKScene {
     }
     
     var isMovingBack = true
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: self) else { return }
         let node = self.atPoint(location)
         
         if node == self {
-            let action = self.action(forKey: "changeBgKey")
-            action?.speed = self.num
+            let action = self.action(forKey: "key")
+            action?.speed = CGFloat(self.speed)
             
         }
         
@@ -67,21 +71,21 @@ class GameScene: SKScene {
         
     }
     
-    var num: CGFloat = 1
     var goToCorner: SKAction {
         let spacer = round.frame.width * 0.5
         let moveToUpperCorner = SKAction.move(to: .init(x: (frame.maxX - spacer),
                                                         y: (frame.minY + spacer)),
-                                              duration: TimeInterval(num))
+                                              duration: TimeInterval(1))
         
         let moveToLowerCorner = SKAction.move(to: .init(x: (frame.minX + spacer),
                                                         y: (frame.maxY - spacer)),
-                                              duration: TimeInterval(num))
+                                              duration: TimeInterval(1))
         
         let sqnc = SKAction.sequence([moveToLowerCorner, moveToUpperCorner])
         round.run(SKAction.repeatForever(sqnc), withKey: "key")
-        
         return sqnc
+        
+
     }
     
     private func loadSlider() {
@@ -92,7 +96,7 @@ class GameScene: SKScene {
     }
     
     @objc func sliderMoved(_ sender: UISlider) {
-        num = CGFloat(slider.value)
+        self.speed = CGFloat(sender.value)
     }
-    
+
 }
